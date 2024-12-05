@@ -48,8 +48,8 @@ $if(invoice)$
 $endif$
 $if(bank)$
   bank: (
-    iban: "$bank.iban$",
-    bic: "$bank.bic$"
+    account: "$bank.account$",
+    routing: "$bank.routing$"
   ),
 $endif$
 $if(lang)$

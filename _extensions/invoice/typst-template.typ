@@ -17,7 +17,7 @@
   } else {
     "th"
   })
-  [the #day#ord of #date.display("[month repr:long]"), #date.year()]
+  [the #day#ord #date.display("[month repr:long]") #date.year()]
 }
 
 #let count-days(x, y) = {
@@ -79,12 +79,9 @@
         v(fontsize * 0.5)
         emph(sender.at("address").at("street").replace("\\", ""))
         linebreak()
-        sender.at("address").at("zip").replace("\\", "") + " " + sender.at("address").at("city").replace("\\", "")
-        if "state" in sender.at("address") and not sender.at("address").at("state") in (none, "") {
-          ", " + sender.at("address").at("state").replace("\\", "")
-        } else {
-          ""
-        }
+        sender.at("address").at("city").replace("\\", "")
+        ", " + sender.at("address").at("state").replace("\\", "")
+        " " + sender.at("address").at("zip").replace("\\", "")
         linebreak()
         sender.at("address").at("country").replace("\\", "")
       }
@@ -104,12 +101,9 @@
         v(fontsize * 0.5)
         emph(recipient.at("address").at("street").replace("\\", ""))
         linebreak()
-        recipient.at("address").at("zip").replace("\\", "") + " " + recipient.at("address").at("city").replace("\\", "")
-        if "state" in recipient.at("address") and not recipient.at("address").at("state") in (none, "") {
-          ", " + recipient.at("address").at("state").replace("\\", "")
-        } else {
-          ""
-        }
+        recipient.at("address").at("city").replace("\\", "")
+        ", " + recipient.at("address").at("state").replace("\\", "")
+        " " + recipient.at("address").at("zip").replace("\\", "")
         linebreak()
         recipient.at("address").at("country").replace("\\", "")
       }
@@ -183,16 +177,16 @@
   })
 
   align(bottom, {
-    if "bic" in bank and "iban" in bank and bank != none {
+    if "routing" in bank and "account" in bank and bank != none {
       heading(level: 3, "Payment information")
       v(fontsize * 0.5)
-      "BIC: " + bank.at("bic").replace("\\", "")
+      "Routing: " + bank.at("routing").replace("\\", "")
       linebreak()
-      "IBAN: " + bank.at("iban").replace("\\", "")
+      "Account: " + bank.at("account").replace("\\", "")
       linebreak()
       "Reference: " + strong(invoice.at("reference").replace("\\", ""))
       linebreak()
-      text(luma(100), emph("To use as label on your bank transfer to identify the transaction."))
+      text(luma(100), emph("To be used as label on bank transfer to identify transaction."))
       linebreak()
     } else {
       hide("a")
@@ -205,9 +199,9 @@
         sender.at("name").replace("\\", "")
           + " sent you this invoice on "
           + format-date(issued)
-          + ". The invoice must be paid under "
+          + ". The invoice must be paid in under "
           + count-days(issued, parse-date(invoice.at("due")))
-          + " day(s). No discount will be granted for early settlement."
+          + " days. No discount will be granted for early settlement."
       )
     )
   })
