@@ -13,9 +13,9 @@ $if(sender)$
     name: "$sender.name$",
     address: (
       street: "$sender.address.street$",
-      zip: "$sender.address.zip$",
       city: "$sender.address.city$",
       state: "$sender.address.state$",
+      zip: "$sender.address.zip$",
       country: "$sender.address.country$"
     ),
     email: "$sender.email$",
@@ -29,9 +29,9 @@ $if(recipient)$
     name: "$recipient.name$",
     address: (
       street: "$recipient.address.street$",
-      zip: "$recipient.address.zip$",
       city: "$recipient.address.city$",
       state: "$recipient.address.state$",
+      zip: "$recipient.address.zip$",
       country: "$recipient.address.country$"
     )
   ),
