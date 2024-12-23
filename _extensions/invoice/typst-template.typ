@@ -34,7 +34,6 @@
   invoice: none,
   bank: none,
   fee: 2.50,
-  penalty: "100",
   paper: "us-legal",
   margin: (x: 1in, y: 1in),
   lang: "en",
@@ -57,11 +56,6 @@
   ]
 
   let issued = parse-date(invoice.at("issued"))
-  if "penalty" in invoice and invoice != none {
-    let penalty = invoice.at("penalty", default: "100")
-  } else {
-    let penalty = "100"
-  }
   if "fee" in invoice and invoice != none {
     let fee = invoice.at("fee", default: 2.28)
   } else {
@@ -216,11 +210,9 @@
           + format-date(issued)
           + ". The invoice must be paid in under "
           + count-days(issued, parse-date(invoice.at("due")))
-          + " days, otherwise you will have to pay a late fee of "
+          + " days, otherwise a late fee of "
           + str(fee)
-          + " % and a "
-          + str(penalty)
-          + " penalty for recovery costs. "
+          + " % applies. "
           + "No discount will be granted for early settlement."
       )
     )

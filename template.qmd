@@ -1,6 +1,6 @@
 ---
 title: Consulting 2024
-description: 01/01/2024 -- 12/31/2024
+description: 01/01/2024 -- 11/30/2024
 logo: none
 sender:
   name: Firstname Lastname
@@ -9,15 +9,15 @@ sender:
     street: "Some Address"
     city: "Boston"
     state: "MA"
-    zip: "02138"
+    zip: "02116"
     country: "United States"
   registration: ""
   vat: ""
   exempted: ""
 invoice:
-  number: 2023-001
-  issued: 2024-12-01
-  due: 2025-01-31
+  number: "2024-001"
+  issued: "2024-12-01"
+  due: "2025-01-30"
   reference: ""
   fee: ""
   penalty: ""
@@ -52,7 +52,7 @@ brand:
       family: "Alegreya Sans"
       size: 11pt
     headings:
-      color: dodgerblue
+      color: darksalmon
 ---
 
 ```{=typst}
@@ -60,7 +60,7 @@ brand:
   columns: (1fr, auto, auto, auto, auto),
   rows: 36pt,
   fill: (col, row) => 
-    if (row == 0 and col in (0, 1, 2, 3, 4, 5)) or (row == 5 and col in (2, 3, 4, 5)) {
+    if (row == 0 and col in (0, 1, 2, 3, 4)) or (row == 3 and col in (0, 1, 2, 3, 4)) {
       luma(240)
     } else {
       white
@@ -68,11 +68,10 @@ brand:
   inset: 5pt,
   align: horizon,
   stroke: none,
-  [*Details*], [*Qty*], [*Unit price*], [*VAT %*], [*Total excl. VAT*],
-  [*A very important deliverable* \ _A description of the tasks_], [1], [€12,345.67], [0 %], [€12,345.67],
+  [*Details*], [], [*Hours*], [*Rate*], [*Total*],
+  [*Deliverable \#1* \ _Details about the deliverable listed above_], [], [1.0], [\$1000.00], [\$1,000.00],
+  [*Deliverable \#2* \ _Details about the deliverable listed above_], [], [1.0], [\$1000.00], [\$1,000.00],
   [], [], [], [], [],
-  [], [], [*Total excl. VAT*], [], [€12,345.67],
-  [], [], [*VAT*], [], [€0.00],
-  [], [], [*Total*], [], [€12,345.67]
+  [], [*Total*], [], [], [\$2,000.00]
 )
 ```
