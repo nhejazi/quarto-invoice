@@ -33,15 +33,29 @@
   recipient: none,
   invoice: none,
   bank: none,
-  fee: 2.28,
+  fee: 2.50,
   penalty: "100",
   paper: "us-legal",
   margin: (x: 1in, y: 1in),
-  lang: "en_US",
-  font: ("Alegreya Sans", "Alegreya Sans SC", "Alegreya Sans", "Alegreya Sans SC"),
-  fontsize: 12pt,
+  lang: "en",
+  region: "US",
+  font: "Alegreya Sans",
+  heading-family: none,
+  heading-weight: "bold",
+  heading-style: "normal",
+  heading-color: black,
+  heading-line-height: 0.65em,
+  fontsize: 11pt,
+  title-size: 1.5em,
   body
 ) = {
+
+  show heading: it => [
+    #set par(leading: heading-line-height)
+    #set text(font: heading-family, weight: heading-weight, style: heading-style, fill: heading-color)
+    #it.body
+  ]
+
   let issued = parse-date(invoice.at("issued"))
   if "penalty" in invoice and invoice != none {
     let penalty = invoice.at("penalty", default: "100")
@@ -66,6 +80,7 @@
   set par(justify: true)
   set text(
     lang: lang,
+    region: region,
     font: font,
     size: fontsize,
   )
@@ -201,7 +216,12 @@
           + format-date(issued)
           + ". The invoice must be paid in under "
           + count-days(issued, parse-date(invoice.at("due")))
-          + " days. No discount will be granted for early settlement."
+          + " days, otherwise you will have to pay a late fee of "
+          + str(fee)
+          + " % and a "
+          + str(penalty)
+          + " penalty for recovery costs. "
+          + "No discount will be granted for early settlement."
       )
     )
   })

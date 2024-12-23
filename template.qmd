@@ -40,7 +40,19 @@ format:
       x: 1in
       y: 1in
     mainfont: "Alegreya Sans"
-    fontsize: 12pt 
+    fontsize: 11pt 
+brand:
+  typography:
+    fonts:
+      - family: Alegreya Sans
+        source: google
+        weight: [400, 700]
+        style: [normal, italic]
+    base:
+      family: "Alegreya Sans"
+      size: 11pt
+    headings:
+      color: dodgerblue
 ---
 
 ```{=typst}
