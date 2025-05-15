@@ -40,17 +40,17 @@ format:
     margin:
       x: 1in
       y: 1in
-    mainfont: "Alegreya Sans"
+    mainfont: "Avenir"
     fontsize: 11pt 
 brand:
   typography:
     fonts:
-      - family: Alegreya Sans
+      - family: Avenir
         source: google
         weight: [400, 700]
         style: [normal, italic]
     base:
-      family: "Alegreya Sans"
+      family: "Avenir"
       size: 11pt
     headings:
       color: darksalmon
