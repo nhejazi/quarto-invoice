@@ -69,7 +69,7 @@ $endif$
 $if(mainfont)$
   font: ("$mainfont$",),
 $elseif(brand.typography.base.family)$
-  font: ("$brand.typography.base.family$",),
+  font: $brand.typography.base.family$,
 $endif$
 $if(fontsize)$
   fontsize: $fontsize$,

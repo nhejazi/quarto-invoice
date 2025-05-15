@@ -42,6 +42,7 @@
   heading-family: none,
   heading-weight: "bold",
   heading-style: "normal",
+  heading-decoration: none,
   heading-color: black,
   heading-line-height: 0.65em,
   fontsize: 11pt,
